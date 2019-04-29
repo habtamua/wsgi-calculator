@@ -157,9 +157,5 @@ def application(environ, start_response):
 if __name__ == '__main__':
     # wsgiref simple server creation
     from wsgiref.simple_server import make_server
-<<<<<<< HEAD
     srv = make_server('localhost', 8080, application)
-=======
-    srv = make_server('localhost', 8081, application)
->>>>>>> dbe1cfcf1d479e2dd6ff46fc84540a09ea148d48
     srv.serve_forever()
