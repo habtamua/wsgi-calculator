@@ -67,6 +67,7 @@ def divide(*args):
     return body
 
 
+<<<<<<< HEAD
 def root_path(*args):
     """
     The index page at the root of the server shall include instructions
@@ -84,6 +85,18 @@ def root_path(*args):
     """
     try:
         print("Instruction page", body)
+=======
+def root_path():
+    """
+    Returns a STRING with the divide of the arguments
+    A call to /divide/a/b yields a + b
+    """
+    body = []
+    # total = 0
+    try:
+        # total = int(args[0]) // int(args[1])
+        body.append("You are on root dir")
+>>>>>>> dbe1cfcf1d479e2dd6ff46fc84540a09ea148d48
     except (ValueError, TypeError) as err:
         body = "Unable to calculate a divide: please provide int values" + str(err)
     return body
@@ -144,5 +157,9 @@ def application(environ, start_response):
 if __name__ == '__main__':
     # wsgiref simple server creation
     from wsgiref.simple_server import make_server
+<<<<<<< HEAD
     srv = make_server('localhost', 8080, application)
+=======
+    srv = make_server('localhost', 8081, application)
+>>>>>>> dbe1cfcf1d479e2dd6ff46fc84540a09ea148d48
     srv.serve_forever()
