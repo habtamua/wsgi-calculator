@@ -2,7 +2,7 @@
 Homework this week, wsgi application of.
 Online calculator that can perform several operations.
 """
-
+import os
 import re
 import traceback
 import math
@@ -122,8 +122,8 @@ def application(environ, start_response):
         path = environ.get('PATH_INFO', None)
         if path is None:
             raise NameError
-        func, args = resolve_path(path)
-        body = func(*args)
+        function, arguments = resolve_path(path)
+        body = function(*arguments)
         status = "200 OK"
     except NameError as e:
         print("got name error", e)
@@ -142,5 +142,7 @@ def application(environ, start_response):
 if __name__ == '__main__':
     # wsgiref simple server creation
     from wsgiref.simple_server import make_server
-    srv = make_server('localhost', 8080, application)
+    port = int(os.environ.get("PORT", 8080))
+
+    srv = make_server('0.0.0.0', port, application)
     srv.serve_forever()
